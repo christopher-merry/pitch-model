@@ -30,11 +30,17 @@ Unique identifier associated with a pitcher
 ### pitcher_team_id
 Unique identifier associated with the team a pitcher plays for
 
+### pitch_hand
+Character value either L or R indicating the hand the pitcher uses to throw (meaning Left or Right) 
+
 ### batter_id
 Unique identifier associated with a batter
 
 ### batter_team_id
 Unique identifier associated with the team a batter plays for
+
+### bat_side
+Character value either L or R indicating the side of the plate the batter stands during the at bat (meaning Left or Right)
 
 ### count_balls_strikes
 A character string that indicates the numeric value for balls and strikes, seperated by a hyphon.  For example, a count with 2 balls and 1 strike is '2-1'
@@ -74,6 +80,9 @@ A value of 0 or 1 indicating if the pitch was a strike (called, swinging, foul)
 
 ### pitch_ball
 A value of 0 or 1 indicating if the pitch was called a ball
+
+### hit_into_play 
+A value of 0 or 1 indicating if the batter swung and put the ball in play.  Foul balls do not count unless the foul ball is caught for an out.
 
 ### spin_rate
 Floating point value indicating the number of revolutions per minute the pitch spins during flight.
