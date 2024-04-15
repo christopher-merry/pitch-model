@@ -1,5 +1,10 @@
 # pitch-model
 
+## Data Set
+The 2023 MLB regular season pitch data set is available here: https://drive.google.com/file/d/1VdqB_q9YrbgDUZklgIYjYFNeFRTIUJ4-/view?usp=drive_link
+
+Sample videos to illustrate pitch zone location are available here: https://drive.google.com/drive/folders/1ytJQ8hHBSVvnIjO1c7S1ykq3eqEmdHYY?usp=sharing
+
 ## Features
 
 ### game_id
@@ -42,6 +47,9 @@ Unique identifier associated with the team a batter plays for
 ### bat_side
 Character value either L or R indicating the side of the plate the batter stands during the at bat (meaning Left or Right)
 
+### bat_side_multiplier
+A value of 1 for a right handed batter or -1 for a left hand batter.  The value is used to normalize the pitch zone location
+
 ### count_balls_strikes
 A character string that indicates the numeric value for balls and strikes, seperated by a hyphon.  For example, a count with 2 balls and 1 strike is '2-1'
 
@@ -80,6 +88,9 @@ A value of 0 or 1 indicating if the pitch was a strike (called, swinging, foul)
 
 ### pitch_ball
 A value of 0 or 1 indicating if the pitch was called a ball
+
+### pitch_type 
+Two character code used to indicate the type of pitch thrown. pitch_type_desc expands the name.
 
 ### hit_into_play 
 A value of 0 or 1 indicating if the batter swung and put the ball in play.  Foul balls do not count unless the foul ball is caught for an out.
@@ -126,6 +137,9 @@ Floating point value that indicates the distance (in inches) on a horizontal pla
 ### relative_strike_zone_location_z
 Floating point value that indicates the distance (in inches) on a vertical plane from the center of the strike zone
 
+### normalized_strike_zone_location_x
+This value is calculated by multiplying bat_side_multiplier by relative_strike_zone_location_x to normalize pitch zone location
+
 ### plate_location_x
 Floating point value that indicates the distance (in inches) on a horizontal plane from the center of home plate
 
@@ -149,3 +163,9 @@ Floating point value that indicates the distance from the ground (in feet) where
 
 ### pitch_release_position_z
 Floating point value that indicates the distance from the apex of home plate (in feet) where the ball was released
+
+### pitch_location_zone 
+Normalized zone decribing where the pitch crosses the plate.  A visual representation is available here: https://docs.google.com/document/d/1eRzfZ7Q4lfMKI-P5wE7UvGP3jzJEbd10sX2-Bh9jK6Y/edit?usp=sharing
+
+### pitch_type_desc 
+Text field that describes the type of pitch thrown
