@@ -145,3 +145,88 @@ GROUP BY p.game_id, p.play_id, p.month_number, p.year, p.game_date, p.at_bat_num
      , ab.hit, p.swing, p.swing_miss, p.swing_contact, p.pitch_result, p.pitch_strike, p.pitch_ball, p.pitch_type
      , CASE WHEN p.pitch_result IN ('In Play No Out', 'In Play Out', 'In Play Runs', 'Pitchout IPNO', 'Pitchout IPO', 'Pitchout IPR') THEN 1 ELSE 0 END
 ;
+
+SELECT pf.*
+     , CASE
+           -- Strike zones 1 - 9
+           WHEN pf.normalized_strike_zone_location_x >= -100 AND pf.normalized_strike_zone_location_x < -33.3333 
+            AND pf.relative_strike_zone_location_z >= -100 AND pf.relative_strike_zone_location_z < -33.3333 
+           THEN 1
+            WHEN pf.normalized_strike_zone_location_x BETWEEN -33.3333 AND 33.3333 
+            AND pf.relative_strike_zone_location_z >= -100 AND pf.relative_strike_zone_location_z < -33.3333 
+           THEN 2
+           WHEN pf.normalized_strike_zone_location_x <= 100 AND pf.normalized_strike_zone_location_x > 33.3333 
+            AND pf.relative_strike_zone_location_z >= -100 AND pf.relative_strike_zone_location_z < -33.3333 
+           THEN 3
+           WHEN pf.normalized_strike_zone_location_x >= -100 AND pf.normalized_strike_zone_location_x < -33.3333 
+            AND pf.relative_strike_zone_location_z BETWEEN -33.3333 AND 33.3333 
+           THEN 4
+           WHEN pf.normalized_strike_zone_location_x BETWEEN -33.3333 AND 33.3333 
+            AND pf.relative_strike_zone_location_z BETWEEN -33.3333 AND 33.3333 
+           THEN 5
+           WHEN pf.normalized_strike_zone_location_x <= 100 AND pf.normalized_strike_zone_location_x > 33.3333 
+            AND pf.relative_strike_zone_location_z BETWEEN -33.3333 AND 33.3333 
+           THEN 6
+           WHEN pf.normalized_strike_zone_location_x >= -100 AND pf.normalized_strike_zone_location_x < -33.3333 
+            AND pf.relative_strike_zone_location_z <= 100 AND pf.relative_strike_zone_location_z > 33.3333 
+           THEN 7
+           WHEN pf.normalized_strike_zone_location_x BETWEEN -33.3333 AND 33.3333 
+            AND pf.relative_strike_zone_location_z <= 100 AND pf.relative_strike_zone_location_z > 33.3333 
+           THEN 8
+           WHEN pf.normalized_strike_zone_location_x <= 100 AND pf.normalized_strike_zone_location_x > 33.3333 
+            AND pf.relative_strike_zone_location_z <= 100 AND pf.relative_strike_zone_location_z > 33.3333 
+           THEN 9
+          -- Ball zones 10 - 25
+           WHEN pf.normalized_strike_zone_location_x < -100 
+            AND pf.relative_strike_zone_location_z < -100  
+           THEN 10
+           WHEN pf.normalized_strike_zone_location_x < -100 
+            AND pf.relative_strike_zone_location_z >= -100 AND pf.relative_strike_zone_location_z < -33.333
+           THEN 11
+           WHEN pf.normalized_strike_zone_location_x < -100 
+            AND pf.relative_strike_zone_location_z BETWEEN -33.333 AND 33.333
+           THEN 12
+           WHEN pf.normalized_strike_zone_location_x < -100 
+            AND pf.relative_strike_zone_location_z <= 100 AND pf.relative_strike_zone_location_z > 33.333
+           THEN 13
+           WHEN pf.normalized_strike_zone_location_x < -100 
+            AND pf.relative_strike_zone_location_z > 100  
+           THEN 14
+           WHEN pf.normalized_strike_zone_location_x >= -100 AND pf.normalized_strike_zone_location_x < -33.3333 
+            AND pf.relative_strike_zone_location_z > 100  
+           THEN 15
+           WHEN pf.normalized_strike_zone_location_x BETWEEN -33.3333 AND 33.3333 
+            AND pf.relative_strike_zone_location_z > 100  
+           THEN 16
+           WHEN pf.normalized_strike_zone_location_x <= 100 AND pf.normalized_strike_zone_location_x > 33.3333 
+            AND pf.relative_strike_zone_location_z > 100  
+           THEN 17
+           WHEN pf.normalized_strike_zone_location_x > 100 
+            AND pf.relative_strike_zone_location_z > 100  
+           THEN 18
+           WHEN pf.normalized_strike_zone_location_x > 100 
+            AND pf.relative_strike_zone_location_z <= 100 AND pf.relative_strike_zone_location_z > 33.333
+           THEN 19
+           WHEN pf.normalized_strike_zone_location_x > 100 
+            AND pf.relative_strike_zone_location_z BETWEEN -33.333 AND 33.333
+           THEN 20
+           WHEN pf.normalized_strike_zone_location_x > 100 
+            AND pf.relative_strike_zone_location_z >= -100 AND pf.relative_strike_zone_location_z < -33.333
+           THEN 21
+           WHEN pf.normalized_strike_zone_location_x > 100 
+            AND pf.relative_strike_zone_location_z < -100  
+           THEN 22
+           WHEN pf.normalized_strike_zone_location_x <= 100 AND pf.normalized_strike_zone_location_x > 33.3333 
+            AND pf.relative_strike_zone_location_z < -100  
+           THEN 23
+           WHEN pf.normalized_strike_zone_location_x BETWEEN -33.3333 AND 33.3333 
+            AND pf.relative_strike_zone_location_z < -100  
+           THEN 24
+           WHEN pf.normalized_strike_zone_location_x <= 100 AND pf.normalized_strike_zone_location_x > 33.3333 
+            AND pf.relative_strike_zone_location_z < -100  
+           THEN 25
+        END AS pitch_location_zone 
+      , pt.pitch_type_desc
+FROM analytics.pitch_features_2023 pf
+JOIN lookup.pitch_type pt 
+ON pf.pitch_type = pt.pitch_type_code;
