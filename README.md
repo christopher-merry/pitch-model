@@ -40,9 +40,9 @@ Sample videos to illustrate pitch zone location are available here: https://driv
 
 ## Model Notebook
 
-Both the swing probability and hit probability models were created in a Jupyter notebook ([swing-probabilities-cm.ipynb](swing-probabilities-cm.ipynb)
+Both the swing probability and hit probability models were created in a Jupyter notebook ([swing-probabilities-cm.ipynb](swing-probabilities-cm.ipynb))
 
-Preliminary research was done in ([LogisticRegression.ipynb](LogisticRegression.ipynb)
+Preliminary research was done in [LogisticRegression.ipynb](LogisticRegression.ipynb)
 
 ## Available Features
 
