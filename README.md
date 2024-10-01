@@ -32,6 +32,8 @@ ___
 
 ## Data Set
 
+Data was made available by Major League Baseball
+
 The 2023 MLB regular season pitch data set is available here: https://drive.google.com/file/d/1VdqB_q9YrbgDUZklgIYjYFNeFRTIUJ4-/view?usp=drive_link
 
 ## Sample Videos
