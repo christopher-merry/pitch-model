@@ -32,7 +32,9 @@ ___
 
 ## Data Set
 
-Data was made available by Major League Baseball
+Data was made available by Major League Baseball.  It is a combination of game details and Statcast pitch metrics.  Pitch location is originally provided as coordinates.  This was converted to a grid as defined here: <div align="center">
+  <img src="images/pitch_location_zones.png" alt="pitch location zones" />
+</div>
 
 The 2023 MLB regular season pitch data set is available here: https://drive.google.com/file/d/1VdqB_q9YrbgDUZklgIYjYFNeFRTIUJ4-/view?usp=drive_link
 
