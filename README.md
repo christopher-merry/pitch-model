@@ -20,9 +20,9 @@ Logistic regression applies a sigmoid function to represent the probability:
 
 Where z is the output of the linear equation, w are the weights, x are the feature data, b is the bias: 
 
-
-
-
+<div align="center">
+  <img src="images/linear-equation.png" alt="linear equation" />
+</div>
 
 Using this information, both pitcher and batter performance can be analyzed in comparison to these probabilities. This means we could predict a positive pitch or hit from various features and potentially know the play before it happens, thus improving athletic performance and game strategy. 
 
