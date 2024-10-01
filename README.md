@@ -31,11 +31,20 @@ ___
 <sup>Yahoo Finance, https://finance.yahoo.com/news/sport-analytics-market-expected-reach-180000614.html</sup>
 
 ## Data Set
+
 The 2023 MLB regular season pitch data set is available here: https://drive.google.com/file/d/1VdqB_q9YrbgDUZklgIYjYFNeFRTIUJ4-/view?usp=drive_link
+
+## Sample Videos
 
 Sample videos to illustrate pitch zone location are available here: https://drive.google.com/drive/folders/1ytJQ8hHBSVvnIjO1c7S1ykq3eqEmdHYY?usp=sharing
 
-## Features
+## Model Notebook
+
+Both the swing probability and hit probability models were created in a Jupyter notebook ([swing-probabilities-cm.ipynb](swing-probabilities-cm.ipynb)
+
+Preliminary research was done in ([LogisticRegression.ipynb](LogisticRegression.ipynb)
+
+## Available Features
 
 ### game_id
 Unique identifier for a game
