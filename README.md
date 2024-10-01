@@ -14,11 +14,9 @@ First, the model will identify the most important features through various featu
 
 Logistic regression applies a sigmoid function to represent the probability:
 
-
-
-
-
-
+<div align="center">
+  <img src="images/sigmoid-function.png" alt="sigmoid function" />
+</div>
 
 Where z is the output of the linear equation, w are the weights, x are the feature data, b is the bias: 
 
