@@ -26,6 +26,9 @@ Where z is the output of the linear equation, w are the weights, x are the featu
 
 Using this information, both pitcher and batter performance can be analyzed in comparison to these probabilities. This means we could predict a positive pitch or hit from various features and potentially know the play before it happens, thus improving athletic performance and game strategy. 
 
+<hr style="width: 20%; text-align: left; margin-left: 0;">
+<small>Yahoo Finance, https://finance.yahoo.com/news/sport-analytics-market-expected-reach-180000614.html</small>
+
 ## Data Set
 The 2023 MLB regular season pitch data set is available here: https://drive.google.com/file/d/1VdqB_q9YrbgDUZklgIYjYFNeFRTIUJ4-/view?usp=drive_link
 
